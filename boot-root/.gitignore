@@ -29,3 +29,9 @@ build/
 
 ### VS Code ###
 .vscode/
+*.cmd
+*.md
+*.iml
+*.mvn
+*.jar
+mvnw
