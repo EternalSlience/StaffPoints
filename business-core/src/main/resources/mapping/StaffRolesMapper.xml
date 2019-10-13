@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.staff.points.mapper.StaffRolesMapper" >
+    <resultMap id="BaseResultMap" type="com.staff.points.entity.StaffRolesEntity" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
+        <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+        <result column="role_desc" property="roleDesc" jdbcType="VARCHAR" />
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.staff.points.entity.StaffRolesEntity" >
+        insert into t_staff_roles
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="roleCode != null" >
+                role_code,
+            </if>
+            <if test="roleName != null" >
+                role_name,
+            </if>
+            <if test="roleDesc != null" >
+                role_desc,
+            </if>
+            <if test="createdBy != null" >
+                created_by,
+            </if>
+            created_time,
+            <if test="updatedBy != null" >
+                updated_by,
+            </if>
+            updated_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="roleCode != null" >
+                #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="roleName != null" >
+                #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="roleDesc != null" >
+                #{roleDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="createdBy != null" >
+                #{createdBy,jdbcType=VARCHAR},
+            </if>
+            now(),
+            <if test="updatedBy != null" >
+                #{updatedBy,jdbcType=VARCHAR},
+            </if>
+            now(),
+        </trim>
+    </insert>
+
+</mapper>

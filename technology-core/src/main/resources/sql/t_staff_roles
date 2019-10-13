@@ -1,0 +1,12 @@
+CREATE TABLE `t_staff_roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `role_code` varchar(16) NOT NULL DEFAULT '' COMMENT '角色code',
+  `role_name` varchar(16) NOT NULL DEFAULT '' COMMENT '角色名称',
+  `role_desc` varchar(64) NOT NULL DEFAULT '' COMMENT '角色描述',
+  `created_by` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人',
+  `created_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_by` varchar(32) NOT NULL DEFAULT '' COMMENT '修改人',
+  `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `index_role_code` (`role_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户角色表';
