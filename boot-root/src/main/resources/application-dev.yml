@@ -4,9 +4,9 @@ spring:          #表示该配置直接为Spring容器负责处理
 　　datasource:
   　　type: com.alibaba.druid.pool.DruidDataSource   #配置当前要使用的数据源的操作类型那个
   　　driver-class-name: com.mysql.jdbc.Driver       #配置MySQL的驱动程序类
-  　　url: jdbc:mysql://localhost:3306/my_project?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-  　　username: root
-  　　password: 123456
+  　　url: jdbc:mysql://192.168.1.113:3306/my_project?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+  　　username: localuser
+  　　password: Jinger!
   　　filters: stat,wall,log4j     #druid监控配置
   　　druid:
        initial-size: 5
@@ -34,8 +34,10 @@ spring:          #表示该配置直接为Spring容器负责处理
        use-global-data-source-stat: true
 
 mybatis:
+  #映射文件路径
   mapper-locations: classpath:mapping/*Mapper.xml
-#  type-aliases-package: com.example.entity
+  #模型所在的包名
+  type-aliases-package: com.staff.points.entity
 
 #showSql
 logging:

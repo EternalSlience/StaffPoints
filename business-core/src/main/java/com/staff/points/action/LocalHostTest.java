@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("test")
 public class LocalHostTest {
 
-    @Autowired
+    @Autowired(required = false)
     private StaffRolesMapper staffRolesMapper;
 
     @RequestMapping("method")
@@ -19,9 +19,9 @@ public class LocalHostTest {
     public String testMethod () {
         System.out.println("testMethod");
         StaffRolesEntity staffRolesEntity = new StaffRolesEntity();
-        staffRolesEntity.setRoleCode("plus");
-        staffRolesEntity.setRoleName("使者");
-        staffRolesEntity.setRoleDesc("加分");
+        staffRolesEntity.setRoleCode("unplus");
+        staffRolesEntity.setRoleName("恶徒");
+        staffRolesEntity.setRoleDesc("减分");
         staffRolesEntity.setCreatedBy("admin");
         staffRolesEntity.setUpdatedBy("admin");
         staffRolesMapper.insert(staffRolesEntity);

@@ -6,4 +6,9 @@ public interface StaffRolesMapper {
 
     void insert(StaffRolesEntity staffRolesEntity);
 
+    int update(StaffRolesEntity staffRolesEntity);
+
+    StaffRolesEntity  query(StaffRolesEntity staffRolesEntity);
+
+
 }

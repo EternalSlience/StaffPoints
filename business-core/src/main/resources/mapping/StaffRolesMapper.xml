@@ -53,5 +53,25 @@
             now(),
         </trim>
     </insert>
+    <update id="update" >
+        UPDATE   t_staff_roles
+        SET
+        <if test="roleCode != null" >
+            role_code =#{roleCode},
+        </if>
+        <if test="roleName != null" >
+            role_name=#{roleName},
+        </if>
+        <if test="roleDesc != null" >
+            role_desc=#{roleDesc},
+        </if>
+        <if test="createdBy != null" >
+            created_by=#{createdBy},
+        </if>
+        <if test="updatedBy != null" >
+            updated_by=#{updatedBy}
+        </if>
+        updated_time=now()
+    </update>
 
 </mapper>

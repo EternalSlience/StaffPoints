@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>technology-core</artifactId>
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -33,4 +32,6 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
+
+
 </project>
