@@ -31,8 +31,8 @@ build/
 .vscode/
 
 *.cmd
-.gitignore
 *.md
 *.iml
 *.mvn
 *.jar
+mvnw
