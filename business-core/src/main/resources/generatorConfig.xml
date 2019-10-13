@@ -46,7 +46,7 @@
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.staff.points.entity" targetProject="src/main/java/com/staff/points/entity">
+        <javaModelGenerator targetPackage="com.staff.points.entity" targetProject="src/main/java">
             <!-- 是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值去掉前后空格 -->
@@ -54,12 +54,12 @@
         </javaModelGenerator>
 
         <!-- 生成map.xml文件存放地址 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/mapping">
+        <sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
         <!-- 生成接口dao -->
-        <javaClientGenerator targetPackage="com.staff.points.mapper" targetProject="src/main/java/com/staff/points/mapper"
+        <javaClientGenerator targetPackage="com.staff.points.mapper" targetProject="src/main/java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.staff.points.mapper.TStaffUserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.staff.points.entity.TStaffUserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="user_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="certificate_no" jdbcType="VARCHAR" property="certificate_no" />
+    <result column="certificate_type" jdbcType="VARCHAR" property="certificate_type" />
+    <result column="team_name" jdbcType="VARCHAR" property="team_name" />
+    <result column="work_type" jdbcType="VARCHAR" property="work_type" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="brith_date" jdbcType="TIMESTAMP" property="brith_date" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="point" jdbcType="VARCHAR" property="point" />
+    <result column="created_by" jdbcType="VARCHAR" property="created_by" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="created_time" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updated_by" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updated_time" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_staff_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.staff.points.entity.TStaffUserInfo">
+    insert into t_staff_user_info (id, user_id, `name`, 
+      certificate_no, certificate_type, team_name, 
+      work_type, gender, age, 
+      brith_date, `status`, point, 
+      created_by, created_time, updated_by, 
+      updated_time)
+    values (#{id,jdbcType=INTEGER}, #{user_id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{certificate_no,jdbcType=VARCHAR}, #{certificate_type,jdbcType=VARCHAR}, #{team_name,jdbcType=VARCHAR}, 
+      #{work_type,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, 
+      #{brith_date,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{point,jdbcType=VARCHAR}, 
+      #{created_by,jdbcType=VARCHAR}, #{created_time,jdbcType=TIMESTAMP}, #{updated_by,jdbcType=VARCHAR}, 
+      #{updated_time,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.staff.points.entity.TStaffUserInfo">
+    update t_staff_user_info
+    set user_id = #{user_id,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      certificate_no = #{certificate_no,jdbcType=VARCHAR},
+      certificate_type = #{certificate_type,jdbcType=VARCHAR},
+      team_name = #{team_name,jdbcType=VARCHAR},
+      work_type = #{work_type,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      brith_date = #{brith_date,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=VARCHAR},
+      point = #{point,jdbcType=VARCHAR},
+      created_by = #{created_by,jdbcType=VARCHAR},
+      created_time = #{created_time,jdbcType=TIMESTAMP},
+      updated_by = #{updated_by,jdbcType=VARCHAR},
+      updated_time = #{updated_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, `name`, certificate_no, certificate_type, team_name, work_type, 
+    gender, age, brith_date, `status`, point, created_by, created_time, updated_by, updated_time
+    from t_staff_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, `name`, certificate_no, certificate_type, team_name, work_type, 
+    gender, age, brith_date, `status`, point, created_by, created_time, updated_by, updated_time
+    from t_staff_user_info
+  </select>
+</mapper>
