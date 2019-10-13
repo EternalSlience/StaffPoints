@@ -1,5 +1,7 @@
 package com.staff.points.action;
 
+import com.staff.points.common.ResponseDto;
+import com.staff.points.common.StaffPointsException;
 import com.staff.points.dto.StaffRolesDto;
 import com.staff.points.entity.StaffRolesEntity;
 import com.staff.points.mapper.StaffRolesMapper;
@@ -22,7 +24,7 @@ public class LocalHostTest {
     @ApiOperation(value = "测试方法", notes = "新增角色")
     @RequestMapping(value = "method", method = RequestMethod.POST)
     @ResponseBody
-    public String testMethod (@RequestBody StaffRolesDto staffRolesDto) {
+    public ResponseDto<String> testMethod (@RequestBody StaffRolesDto staffRolesDto) {
         System.out.println("testMethod");
         StaffRolesEntity staffRolesEntity = new StaffRolesEntity();
         staffRolesEntity.setRoleCode(staffRolesDto.getRoleCode());
@@ -30,7 +32,10 @@ public class LocalHostTest {
         staffRolesEntity.setRoleDesc(staffRolesDto.getRoleDesc());
         staffRolesEntity.setCreatedBy(staffRolesDto.getCreatedBy());
         staffRolesEntity.setUpdatedBy(staffRolesDto.getUpdatedBy());
+        if ("string".equalsIgnoreCase(staffRolesDto.getRoleCode())) {
+            throw new StaffPointsException("01", "异常了");
+        }
         staffRolesMapper.insert(staffRolesEntity);
-        return "小静子";
+        return new ResponseDto<String>().assemblingSuccessResponse("小静子");
     }
 }
