@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.staff.points.mapper.ManagerInfoMapper">
+    <resultMap id="BaseResultMap" type="com.staff.points.entity.ManagerInfoEntityDO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="manager_id" jdbcType="VARCHAR" property="managerId"/>
+        <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+        <result column="certificate_no" jdbcType="VARCHAR" property="certificateNo"/>
+        <result column="certificate_type" jdbcType="VARCHAR" property="certificateType"/>
+        <result column="scan_times" jdbcType="INTEGER" property="scanTimes"/>
+        <result column="pass_word" jdbcType="VARCHAR" property="passWord"/>
+        <result column="week_points_limit" jdbcType="INTEGER" property="weekPointsLimit"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="created_time" jdbcType="TIMESTAMP" property="createdTime"/>
+        <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_manager_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.staff.points.entity.ManagerInfoEntityDO">
+    insert into t_manager_info (id, manager_id, `role`, 
+      `name`, department, certificate_no, 
+      certificate_type, scan_times, week_points_limit, 
+      `status`, project_name, pass_word,created_by,
+      created_time, updated_by, updated_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{managerId,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{certificateNo,jdbcType=VARCHAR}, 
+      #{certificateType,jdbcType=VARCHAR}, #{scanTimes,jdbcType=INTEGER}, #{weekPointsLimit,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR},#{createdBy,jdbcType=VARCHAR},
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.staff.points.entity.ManagerInfoEntityDO">
+    update t_manager_info
+    set manager_id = #{managerId,jdbcType=VARCHAR},
+      `role` = #{role,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      certificate_no = #{certificateNo,jdbcType=VARCHAR},
+      certificate_type = #{certificateType,jdbcType=VARCHAR},
+      scan_times = #{scanTimes,jdbcType=INTEGER},
+      week_points_limit = #{weekPointsLimit,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+       pass_word = #{passWord,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, manager_id, `role`, `name`, department, certificate_no, certificate_type, 
+    scan_times, week_points_limit, `status`, project_name, pass_word,created_by, created_time,
+    updated_by, updated_time
+    from t_manager_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, manager_id, `role`, `name`, department, certificate_no, certificate_type, 
+    scan_times, week_points_limit, `status`, project_name, pass_word,created_by, created_time,
+    updated_by, updated_time
+    from t_manager_info
+  </select>
+    <select id="selectByCertificateNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, manager_id, `role`, `name`, department, certificate_no, certificate_type,
+    scan_times, week_points_limit, `status`, project_name,pass_word, created_by, created_time,
+    updated_by, updated_time
+    from t_manager_info
+    where certificate_no = #{certificateNo,jdbcType=INTEGER}
+  </select>
+    <update id="updateByManagerId" parameterType="com.staff.points.entity.ManagerInfoEntityDO">
+        update t_manager_info
+        set
+        <if test="name != null">
+            name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="certificateNo != null">
+            certificate_no = #{certificateNo,jdbcType=VARCHAR},
+        </if>
+        <if test="department != null">
+            department = #{department,jdbcType=VARCHAR},
+        </if>
+        <if test="passWord != null">
+            pass_word = #{passWord,jdbcType=VARCHAR},
+        </if>
+        <if test="projectName != null">
+            project_name = #{projectName,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null">
+            status = #{status,jdbcType=VARCHAR},
+        </if>
+        <if test="weekPointsLimit != null">
+            week_points_limit = #{weekPointsLimit,jdbcType=VARCHAR},
+        </if>
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+        updated_time = now()
+        where manager_id = #{managerId,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByCondition" parameterType="com.staff.points.entity.ManagerInfoEntityDO" resultMap="BaseResultMap">
+        select id, manager_id, `role`, `name`, department, certificate_no, certificate_type,
+        scan_times, week_points_limit, `status`, project_name,pass_word, created_by, created_time,
+        updated_by, updated_time
+        from t_manager_info
+        <where>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="department != null">
+               and  department = #{department,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null">
+               and  status = #{status,jdbcType=VARCHAR}
+            </if>
+
+        </where>
+    </select>
+</mapper>

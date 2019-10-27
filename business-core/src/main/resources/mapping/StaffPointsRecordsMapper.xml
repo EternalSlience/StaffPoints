@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.staff.points.mapper.StaffPointsRecordsMapper">
+  <resultMap id="BaseResultMap" type="com.staff.points.entity.StaffPointsRecordsEntityDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="manager_id" jdbcType="VARCHAR" property="managerId" />
+    <result column="manager_name" jdbcType="VARCHAR" property="managerName" />
+    <result column="manager_dept" jdbcType="VARCHAR" property="managerDept" />
+    <result column="manager_certificate_no" jdbcType="VARCHAR" property="managerCertificateNo" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="worker_id" jdbcType="VARCHAR" property="workerId" />
+    <result column="worker_name" jdbcType="VARCHAR" property="workerName" />
+    <result column="work_type" jdbcType="VARCHAR" property="workType" />
+    <result column="worker_certificate_no" jdbcType="VARCHAR" property="workerCertificateNo" />
+    <result column="worker_company" jdbcType="VARCHAR" property="workerCompany" />
+    <result column="point_type" jdbcType="VARCHAR" property="pointType" />
+    <result column="point" jdbcType="INTEGER" property="point" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_staff_points_records
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.staff.points.entity.StaffPointsRecordsEntityDO">
+    insert into t_staff_points_records (id, manager_id, manager_name, 
+      manager_dept, manager_certificate_no, project_name, 
+      worker_id, worker_name, work_type, 
+      worker_certificate_no, worker_company, point_type, 
+      point, created_by, created_time, 
+      updated_by, updated_time)
+    values (#{id,jdbcType=INTEGER}, #{managerId,jdbcType=VARCHAR}, #{managerName,jdbcType=VARCHAR}, 
+      #{managerDept,jdbcType=VARCHAR}, #{managerCertificateNo,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
+      #{workerId,jdbcType=VARCHAR}, #{workerName,jdbcType=VARCHAR}, #{workType,jdbcType=VARCHAR}, 
+      #{workerCertificateNo,jdbcType=VARCHAR}, #{workerCompany,jdbcType=VARCHAR}, #{pointType,jdbcType=VARCHAR}, 
+      #{point,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.staff.points.entity.StaffPointsRecordsEntityDO">
+    update t_staff_points_records
+    set manager_id = #{managerId,jdbcType=VARCHAR},
+      manager_name = #{managerName,jdbcType=VARCHAR},
+      manager_dept = #{managerDept,jdbcType=VARCHAR},
+      manager_certificate_no = #{managerCertificateNo,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      worker_id = #{workerId,jdbcType=VARCHAR},
+      worker_name = #{workerName,jdbcType=VARCHAR},
+      work_type = #{workType,jdbcType=VARCHAR},
+      worker_certificate_no = #{workerCertificateNo,jdbcType=VARCHAR},
+      worker_company = #{workerCompany,jdbcType=VARCHAR},
+      point_type = #{pointType,jdbcType=VARCHAR},
+      point = #{point,jdbcType=INTEGER},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, manager_id, manager_name, manager_dept, manager_certificate_no, project_name, 
+    worker_id, worker_name, work_type, worker_certificate_no, worker_company, point_type, 
+    point, created_by, created_time, updated_by, updated_time
+    from t_staff_points_records
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, manager_id, manager_name, manager_dept, manager_certificate_no, project_name, 
+    worker_id, worker_name, work_type, worker_certificate_no, worker_company, point_type, 
+    point, created_by, created_time, updated_by, updated_time
+    from t_staff_points_records
+  </select>
+</mapper>
